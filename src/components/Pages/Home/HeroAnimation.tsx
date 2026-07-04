@@ -2,16 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Base Orbit ellipse dimensions
 const RX = 248;
 const RY = 176;
 const OX = -50; // Orbit center offset from viewport center
 
-// Small card (ring icon) dimensions
+// Small card dimensions
 const SW = 60;
 const SH = 46;
 const SBR = 10;
@@ -33,130 +30,174 @@ interface CardDef {
   fr: number;
   bg: string[];
   type: "web" | "phone";
+  imageUrl: string;
 }
 
-// 12 cards evenly distributed around the orbit
+// 12 cards evenly distributed around the orbit with curated mockup image assets
 const CARDS: CardDef[] = [
-  { id: 0,  a: 0,   fw: 270, fh: 168, fr: -3, bg: ["#052516", "#0d4d31", "#15774c"], type: "web"   },
-  { id: 1,  a: 30,  fw: 210, fh: 310, fr: 5,  bg: ["#0b1f3c", "#173b70", "#265da8"], type: "phone" },
-  { id: 2,  a: 60,  fw: 260, fh: 170, fr: -6, bg: ["#2d0e0e", "#5a1f1f", "#8d3434"], type: "web"   },
-  { id: 3,  a: 90,  fw: 220, fh: 300, fr: 4,  bg: ["#241505", "#4a2c0a", "#784b15"], type: "phone" },
-  { id: 4,  a: 120, fw: 280, fh: 160, fr: -5, bg: ["#1c0c2b", "#3d1b5c", "#653194"], type: "web"   },
-  { id: 5,  a: 150, fw: 200, fh: 320, fr: 6,  bg: ["#0c2527", "#1d4c50", "#2f7b80"], type: "phone" },
-  { id: 6,  a: 180, fw: 270, fh: 165, fr: -4, bg: ["#1e2509", "#3f4d17", "#637827"], type: "web"   },
-  { id: 7,  a: 210, fw: 215, fh: 315, fr: -5, bg: ["#220d2b", "#491e5c", "#7b3699"], type: "phone" },
-  { id: 8,  a: 240, fw: 250, fh: 175, fr: 3,  bg: ["#092628", "#155054", "#237e84"], type: "web"   },
-  { id: 9,  a: 270, fw: 230, fh: 290, fr: -4, bg: ["#2d1b09", "#5b3614", "#925722"], type: "phone" },
-  { id: 10, a: 300, fw: 275, fh: 162, fr: 5,  bg: ["#151c27", "#2b394f", "#445877"], type: "web"   },
-  { id: 11, a: 330, fw: 225, fh: 305, fr: -6, bg: ["#082e1b", "#105d39", "#1b8a53"], type: "phone" },
+  {
+    id: 0,
+    a: 0,
+    fw: 270,
+    fh: 168,
+    fr: -3,
+    bg: ["#052516", "#0d4d31", "#15774c"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 1,
+    a: 30,
+    fw: 210,
+    fh: 310,
+    fr: 5,
+    bg: ["#0b1f3c", "#173b70", "#265da8"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 2,
+    a: 60,
+    fw: 260,
+    fh: 170,
+    fr: -6,
+    bg: ["#2d0e0e", "#5a1f1f", "#8d3434"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 3,
+    a: 90,
+    fw: 220,
+    fh: 300,
+    fr: 4,
+    bg: ["#241505", "#4a2c0a", "#784b15"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 4,
+    a: 120,
+    fw: 280,
+    fh: 160,
+    fr: -5,
+    bg: ["#1c0c2b", "#3d1b5c", "#653194"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 5,
+    a: 150,
+    fw: 200,
+    fh: 320,
+    fr: 6,
+    bg: ["#0c2527", "#1d4c50", "#2f7b80"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 6,
+    a: 180,
+    fw: 270,
+    fh: 165,
+    fr: -4,
+    bg: ["#1e2509", "#3f4d17", "#637827"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 7,
+    a: 210,
+    fw: 215,
+    fh: 315,
+    fr: -5,
+    bg: ["#220d2b", "#491e5c", "#7b3699"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 8,
+    a: 240,
+    fw: 250,
+    fh: 175,
+    fr: 3,
+    bg: ["#092628", "#155054", "#237e84"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 9,
+    a: 270,
+    fw: 230,
+    fh: 290,
+    fr: -4,
+    bg: ["#2d1b09", "#5b3614", "#925722"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 10,
+    a: 300,
+    fw: 275,
+    fh: 162,
+    fr: 5,
+    bg: ["#151c27", "#2b394f", "#445877"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 11,
+    a: 330,
+    fw: 225,
+    fh: 305,
+    fr: -6,
+    bg: ["#082e1b", "#105d39", "#1b8a53"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1614680376593-902f74fa0d41?auto=format&fit=crop&w=600&q=80",
+  },
 ];
 
-// ─── Inner glassmorphic UI placeholders ───────────────────────────────────────
-function CardInner({ type, id }: { type: "web" | "phone"; id: number }) {
-  if (type === "web") {
-    return (
-      <div className="absolute inset-0 flex flex-col overflow-hidden text-white/95">
-        {/* Browser Header */}
-        <div className="shrink-0 h-6 bg-black/45 border-b border-white/10 flex items-center gap-1.5 px-3">
-          <div className="flex gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
-            <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500/80" />
-          </div>
-          <div className="flex-1 mx-4 h-3.5 bg-white/10 rounded flex items-center px-2 text-[8px] text-white/40 overflow-hidden font-sans select-none">
-            {id % 2 === 0 ? "https://juice.design/agency" : "https://juice.creative/portfolio"}
-          </div>
-          <div className="w-3 h-0.5 bg-white/30 rounded" />
-        </div>
+// ─── Inner Mockup Card Renderer ──────────────────────────────────────────────
+interface CardInnerProps {
+  type: "web" | "phone";
+  imageUrl: string;
+  id: number;
+  tRef: (el: HTMLDivElement | null) => void;
+  iRef: (el: HTMLDivElement | null) => void;
+}
 
-        {/* Content Layout */}
-        <div className="flex-1 p-3 flex flex-col gap-2 font-sans select-none bg-black/10">
-          {/* Header */}
-          <div className="flex justify-between items-center pb-1.5 border-b border-white/5">
-            <div className="w-10 h-3 bg-white/20 rounded" />
-            <div className="flex gap-1.5">
-              <div className="w-6 h-2 bg-white/10 rounded" />
-              <div className="w-6 h-2 bg-white/10 rounded" />
-              <div className="w-6 h-2 bg-white/10 rounded" />
-            </div>
-          </div>
-
-          {/* Hero Block */}
-          <div className="flex-1 flex gap-2">
-            <div className="flex-[3] flex flex-col gap-2 justify-center">
-              <div className="h-4 bg-white/35 rounded-sm w-11/12" />
-              <div className="h-2.5 bg-white/20 rounded-sm w-full" />
-              <div className="h-2.5 bg-white/20 rounded-sm w-3/4" />
-              <div className="h-4 bg-white/30 rounded w-5/12 mt-1" />
-            </div>
-            <div className="flex-[2] bg-white/10 rounded-md border border-white/10 p-1 flex flex-col gap-1">
-              <div className="flex-1 bg-white/10 rounded flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-white/15 animate-pulse" />
-              </div>
-              <div className="h-2 bg-white/15 rounded-sm" />
-              <div className="h-2 bg-white/15 rounded-sm" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Mobile App Phone Mockup
+function CardInner({ type, imageUrl, id, tRef, iRef }: CardInnerProps) {
   return (
-    <div className="absolute inset-0 flex flex-col overflow-hidden text-white/95">
-      {/* Status Bar */}
-      <div className="shrink-0 h-6 bg-black/25 flex items-center justify-between px-3 text-[9px] font-sans text-white/60 select-none">
-        <span>09:41</span>
-        <div className="flex items-center gap-1">
-          <div className="w-2.5 h-1.5 bg-white/60 rounded-xs" />
-          <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-        </div>
-      </div>
+    <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[inherit] flex flex-col bg-neutral-900 select-none">
+      {/* Visual background (mockup preview) */}
+      <div className="absolute inset-0 w-full h-full bg-cover bg-center select-none" style={{ backgroundImage: `url(${imageUrl})` }} />
+      {/* Elegant glass/shadow overlay to build contrast */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none z-1" />
 
-      {/* Screen Content */}
-      <div className="flex-1 p-3 flex flex-col gap-2.5 font-sans select-none bg-black/5">
-        {/* Profile Card */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white/20 border border-white/10 flex items-center justify-center text-[10px]">👤</div>
-          <div className="flex-1 flex flex-col gap-1">
-            <div className="h-2.5 bg-white/30 rounded w-1/2" />
-            <div className="h-2 bg-white/15 rounded w-1/3" />
-          </div>
-        </div>
+      {/* Thumbnail overlay: slight darkening when small (fades out as it expands) */}
+      <div ref={tRef} className="absolute inset-0 bg-black/25 pointer-events-none z-5 transition-opacity" />
 
-        {/* Dynamic Card Area */}
-        <div className="bg-white/10 rounded-lg p-2 border border-white/10 flex flex-col gap-1.5">
-          <div className="h-2.5 bg-white/30 rounded w-3/4" />
-          <div className="h-5 bg-white/15 rounded" />
-          <div className="flex justify-between mt-1">
-            <div className="w-1/4 h-2.5 bg-white/15 rounded" />
-            <div className="w-1/3 h-2.5 bg-white/25 rounded" />
-          </div>
-        </div>
-
-        {/* Small List */}
-        <div className="flex-1 flex flex-col gap-1.5 overflow-hidden">
-          {[1, 2].map(j => (
-            <div key={j} className="h-7 bg-white/5 rounded flex items-center px-2 justify-between border border-white/5">
-              <div className="flex items-center gap-2 w-full">
-                <div className="w-3.5 h-3.5 rounded bg-white/20" />
-                <div className="flex-1 flex flex-col gap-1">
-                  <div className="h-2 bg-white/25 rounded w-1/2" />
-                  <div className="h-1.5 bg-white/10 rounded w-1/3" />
-                </div>
-              </div>
-              <div className="w-4 h-3 bg-white/20 rounded-full" />
+      {/* Device mock frame overlay (fades in as it expands) */}
+      <div ref={iRef} className="absolute inset-0 flex flex-col pointer-events-none opacity-0 z-10">
+        {type === "web" ? (
+          <div className="shrink-0 h-6 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center gap-1.5 px-3">
+            <div className="flex gap-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
+              <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500/80" />
             </div>
-          ))}
-        </div>
-
-        {/* Tab Bar */}
-        <div className="h-8 bg-black/20 border-t border-white/5 flex items-center justify-around rounded-t-lg -mx-3 -mb-3 px-3">
-          {[1, 2, 3, 4].map(j => (
-            <div key={j} className="w-3.5 h-3.5 rounded-full bg-white/15" />
-          ))}
-        </div>
+            <div className="flex-1 mx-4 h-3.5 bg-white/10 rounded flex items-center px-2 text-[8px] text-white/50 overflow-hidden font-sans select-none">{id % 2 === 0 ? "https://juice.design/agency" : "https://juice.creative/portfolio"}</div>
+            <div className="w-3 h-0.5 bg-white/30 rounded" />
+          </div>
+        ) : (
+          <div className="shrink-0 h-6 bg-black/40 backdrop-blur-md flex items-center justify-between px-3 text-[9px] font-sans text-white/70 select-none">
+            <span>09:41</span>
+            <div className="flex items-center gap-1">
+              <div className="w-2.5 h-1.5 bg-white/60 rounded-xs" />
+              <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -194,15 +235,52 @@ export default function HeroAnimation() {
       });
     });
 
-    inners.forEach(el => gsap.set(el, { opacity: 0 }));
-    thumbnails.forEach(el => gsap.set(el, { opacity: 1 }));
+    inners.forEach((el) => gsap.set(el, { opacity: 0 }));
+    thumbnails.forEach((el) => gsap.set(el, { opacity: 1 }));
 
     // Animation state variables
-    let orbitDeg = 0;             // Base auto-rotation angle
-    let targetScrollProg = 0;     // Scroll Trigger position (0 to 1)
-    let smoothScrollProg = 0;     // Damped scroll progress
-    let targetVelocity = 0;       // Velocity from scroll trigger
-    let smoothVelocity = 0;       // Damped velocity
+    let orbitDeg = 0; // Base auto-rotation angle
+    let targetY = 0; // Custom virtual scroll position target
+    let smoothY = 0; // Damped scroll position
+    let smoothVelocity = 0; // Damped scroll velocity
+
+    // Event listeners for virtual scroll gestures
+    const handleWheel = (e: WheelEvent) => {
+      // Prevent default browser scroll to keep page steady
+      e.preventDefault();
+      targetY += e.deltaY * 0.85; // Natural speed mapping
+      if (targetY < 0) targetY = 0; // Return-to-top limit
+    };
+
+    let touchStartY = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+      touchStartY = touchY;
+      targetY += deltaY * 1.5; // Responsive touch drag
+      if (targetY < 0) targetY = 0;
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown" || e.key === "PageDown") {
+        e.preventDefault();
+        targetY += 80;
+      } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+        e.preventDefault();
+        targetY -= 80;
+        if (targetY < 0) targetY = 0;
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("keydown", handleKeyDown, { passive: false });
 
     const render = () => {
       const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
@@ -210,15 +288,15 @@ export default function HeroAnimation() {
       const adaptiveRX = isMobile ? window.innerWidth * 0.32 : RX;
       const adaptiveRY = isMobile ? window.innerHeight * 0.18 : RY;
 
-      // Smooth interpolation (lerping)
-      smoothScrollProg += (targetScrollProg - smoothScrollProg) * 0.08;
-      smoothVelocity += (targetVelocity - smoothVelocity) * 0.08;
-      
-      // Decay velocity target back to 0
-      targetVelocity *= 0.95;
+      // Smooth interpolation (lerping) for virtual scroll inertia
+      smoothY += (targetY - smoothY) * 0.08;
 
-      // Scroll changes rotation directly, creating a "scroll to spin" effect
-      const scrollAngle = smoothScrollProg * 480; 
+      // Calculate scroll velocity per frame
+      const frameVelocity = targetY - smoothY;
+      smoothVelocity += (frameVelocity - smoothVelocity) * 0.08;
+
+      // Continuous loop angle: auto-rotate + scroll delta + velocity drift
+      const scrollAngle = smoothY * 0.15;
       const velocitySpin = smoothVelocity * 0.03;
       const totalAngle = orbitDeg + scrollAngle + velocitySpin;
 
@@ -227,6 +305,9 @@ export default function HeroAnimation() {
       const centrifugalStretch = 1 + Math.min(speed * 0.00008, 0.12);
       const currentRX = adaptiveRX * centrifugalStretch;
       const currentRY = adaptiveRY * centrifugalStretch;
+
+      // Activation progress (0 to 1) based on scroll offset from top
+      const activationProgress = Math.min(1, smoothY / 150);
 
       cards.forEach((card, i) => {
         const d = CARDS[i];
@@ -237,7 +318,7 @@ export default function HeroAnimation() {
         // Only cards on the front-right side of the circle expand (cos > 0)
         // Back cards stay as small thumbnails
         const depth = Math.max(0, cos);
-        const t = easeOutCubic(depth * smoothScrollProg);
+        const t = easeOutCubic(depth * activationProgress);
 
         // Card size scaling
         const w = SW + (d.fw * scaleFactor - SW) * t;
@@ -249,11 +330,6 @@ export default function HeroAnimation() {
         const x = OX + cos * currentRX * spread;
         const y = sin * currentRY * spread;
 
-        // Dynamic tilts/skews based on speed and base layout values
-        const velocityTilt = smoothVelocity * 0.004;
-        const skewX = Math.max(-12, Math.min(12, smoothVelocity * 0.006));
-        const r = d.fr * t + velocityTilt;
-
         // Dynamic z-index layering (cos maps depth; front = highest z-index)
         const dynamicZ = Math.round((cos + 1) * 30) + 5;
 
@@ -262,18 +338,18 @@ export default function HeroAnimation() {
           y,
           width: w,
           height: h,
-          rotation: r,
-          skewX,
+          rotation: 0,
+          skewX: 0,
           borderRadius: br,
           zIndex: dynamicZ,
         });
 
-        // Cross-fade the simplified thumbnail icon and detailed layout content
+        // Fade UI chrome based on scale progress
         if (thumbnails[i]) {
-          gsap.set(thumbnails[i], { opacity: Math.max(0, 1 - t * 2.2) });
+          gsap.set(thumbnails[i], { opacity: Math.max(0, 1 - t * 1.5) });
         }
         if (inners[i]) {
-          gsap.set(inners[i], { opacity: Math.max(0, (t - 0.35) * 1.5) });
+          gsap.set(inners[i], { opacity: Math.max(0, (t - 0.2) * 1.25) });
         }
       });
     };
@@ -287,72 +363,54 @@ export default function HeroAnimation() {
 
     gsap.ticker.add(ticker);
 
-    // Bind ScrollTrigger
-    const st = ScrollTrigger.create({
-      trigger: wrapRef.current,
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: self => {
-        targetScrollProg = self.progress;
-        targetVelocity = self.getVelocity();
-      },
-    });
-
     // Handle screen resize events to update coordinates instantly
     const handleResize = () => render();
     window.addEventListener("resize", handleResize);
 
     return () => {
       gsap.ticker.remove(ticker);
-      st.kill();
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div ref={wrapRef} style={{ height: "320vh" }}>
-      <div
-        className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#f8f9f7]"
-      >
-        {CARDS.map((card, i) => (
-          <div
-            key={card.id}
-            ref={el => { cardRefs.current[i] = el; }}
-            className="absolute overflow-hidden shadow-lg border border-white/10"
-            style={{
-              left: "50%",
-              top: "50%",
-              background: `linear-gradient(145deg, ${card.bg.join(", ")})`,
-              willChange: "transform, width, height, z-index",
-            }}
-          >
-            {/* Centered Thumbnail Icon (Visible when small, fades out on expansion) */}
-            <div
-              ref={el => { thumbnailRefs.current[i] = el; }}
-              className="absolute inset-0 flex items-center justify-center text-white/70"
-            >
-              {card.type === "web" ? (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                </svg>
-              )}
-            </div>
+    <div ref={wrapRef} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#f8f9f7] select-none touch-none">
+      {/* Background radial accent to look premium */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.85)_0%,rgba(240,242,238,0.55)_100%)] pointer-events-none" />
 
-            {/* Glassmorphic UI Details (Fades in on expansion) */}
-            <div
-              ref={el => { innerRefs.current[i] = el; }}
-              className="absolute inset-0 opacity-0"
-            >
-              <CardInner type={card.type} id={card.id} />
-            </div>
+      {CARDS.map((card, i) => (
+        <div
+          key={card.id}
+          ref={(el) => {
+            cardRefs.current[i] = el;
+          }}
+          className="absolute overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-white/20 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+          style={{
+            left: "50%",
+            top: "50%",
+            background: `linear-gradient(145deg, ${card.bg.join(", ")})`,
+            willChange: "transform, width, height, z-index",
+          }}
+        >
+          <div className="absolute inset-0 w-full h-full">
+            <CardInner
+              type={card.type}
+              imageUrl={card.imageUrl}
+              id={card.id}
+              tRef={(el) => {
+                thumbnailRefs.current[i] = el;
+              }}
+              iRef={(el) => {
+                innerRefs.current[i] = el;
+              }}
+            />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
-
