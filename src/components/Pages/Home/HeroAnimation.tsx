@@ -1,11 +1,112 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import ProjectDetailsModal from "./ProjectDetailsModal";
+
+// Rich metadata content mapping for project details popup modal
+const PROJECT_DETAILS: Record<number, { title: string; subtitle: string; desc: string; tags: string[] }> = {
+  0: {
+    title: "Juice Design Agency",
+    subtitle: "UX/UI DESIGN & INTERACTIVE DEVELOPMENT",
+    desc: "A premium, award-winning creative agency portfolio featuring smooth WebGL transitions, glassmorphic layouts, and bespoke branding concepts.",
+    tags: ["React", "Next.js", "GSAP", "TailwindCSS"],
+  },
+  1: {
+    title: "Vibe Social App",
+    subtitle: "MOBILE APP DESIGN & SYSTEM",
+    desc: "An immersive mobile application concept connecting creators worldwide. Designed with dark-mode aesthetic, card gestures, and custom haptics.",
+    tags: ["React Native", "Expo", "Framer Motion", "Zustand"],
+  },
+  2: {
+    title: "EcoSphere E-Commerce",
+    subtitle: "RESPONSIVE HEADLESS COMMERCE",
+    desc: "Sustainable online retail experience with real-time checkout integration, custom cart workflows, and elegant material-style presentation.",
+    tags: ["Shopify", "TailwindCSS", "Next.js", "Stripe"],
+  },
+  3: {
+    title: "Aura Smart Home",
+    subtitle: "IOT MOBILE DASHBOARD",
+    desc: "Sleek IoT control system managing smart lighting, climate control, and home security with high-contrast color palettes and status widgets.",
+    tags: ["Flutter", "Dart", "Firebase", "WebSockets"],
+  },
+  4: {
+    title: "Solana NFT Marketplace",
+    subtitle: "WEB3 DAPP & WALLET INTEGRATION",
+    desc: "Decentralized digital art gallery allowing seamless wallet connection, NFT minting, and live-bidding auctions with Web3 interactivity.",
+    tags: ["Solana", "TypeScript", "Next.js", "Anchor"],
+  },
+  5: {
+    title: "Summit Travel Guide",
+    subtitle: "NATIVE OUTDOOR ADVENTURE APP",
+    desc: "Curated trail guides, offline vector map navigation, and community summit check-ins developed for mobile travelers and hiking enthusiasts.",
+    tags: ["React Native", "Mapbox", "Node.js", "PostgreSQL"],
+  },
+  6: {
+    title: "Chroma Creative Studio",
+    subtitle: "INTERACTIVE BRAND EXHIBITION",
+    desc: "Immersive landing page showcasing high-end photography, cinematic video banners, and experimental typographic layout structures.",
+    tags: ["Three.js", "GSAP", "Sass", "Webpack"],
+  },
+  7: {
+    title: "Zenith Meditation App",
+    subtitle: "HEALTH & WELLNESS SUITE",
+    desc: "Calming audio player, personalized session logging, and modular habit tracker designed to reduce daily stress and cultivate mindfulness.",
+    tags: ["Swift", "SwiftUI", "CoreData", "AVFoundation"],
+  },
+  8: {
+    title: "Apex Analytics Dashboard",
+    subtitle: "ENTERPRISE METRICS PORTAL",
+    desc: "Interactive data visualization platform rendering live sales pipelines, retention funnels, and performance indexes with high speed rendering.",
+    tags: ["Next.js", "React Query", "ApexCharts", "Zustand"],
+  },
+  9: {
+    title: "Lumina Dating Network",
+    subtitle: "MOBILE SOCIAL EXPERIENCE",
+    desc: "Next-gen matching application incorporating audio introductions, calendar scheduling, and profile customization with high-end security.",
+    tags: ["React Native", "Zustand", "Express", "MongoDB"],
+  },
+  10: {
+    title: "Nebula Cloud Hosting",
+    subtitle: "SaaS INFRASTRUCTURE SITE",
+    desc: "High-performance marketing portal for scalable VPS hosting, load balancer metrics, and developer-friendly documentation interfaces.",
+    tags: ["Next.js", "TailwindCSS", "TypeScript", "MDX"],
+  },
+  11: {
+    title: "Leaf Meal Delivery",
+    subtitle: "HEALTHY FOOD SUBSCRIPTION APP",
+    desc: "Organic meal planner, automated calendar dispatch, and delivery path tracking optimized for active and health-conscious lifestyles.",
+    tags: ["React Native", "Google Maps API", "Stripe"],
+  },
+  12: {
+    title: "Hydro Web Design",
+    subtitle: "INTERACTIVE FLUID MARKETING PORTAL",
+    desc: "A marketing portal with high-end fluid simulations, scroll-tied visual feedback, and bespoke vector animations for product launches.",
+    tags: ["WebGL", "Three.js", "GSAP", "TailwindCSS"],
+  },
+  13: {
+    title: "Nova Messenger App",
+    subtitle: "ENCRYPTED CHAT INTERFACE",
+    desc: "Real-time communication suite offering peer-to-peer encryption, offline storage, custom chat styling, and automatic message backup.",
+    tags: ["Swift", "WebRTC", "SQLite", "Protobuf"],
+  },
+  14: {
+    title: "Atlas Project Management",
+    subtitle: "ENTERPRISE SCRUM PLATFORM",
+    desc: "Collab tools including live kanban boards, timeline Gantt charts, file co-authoring, and automated developer pull-request integrations.",
+    tags: ["React", "Next.js", "React Flow", "Prisma"],
+  },
+  15: {
+    title: "Solstice Audio App",
+    subtitle: "PODCAST & MUSIC STREAMER",
+    desc: "Sleek, personalized streaming player with dynamic queue management, cross-device playback synchronization, and offline downloads.",
+    tags: ["Kotlin", "Jetpack Compose", "ExoPlayer"],
+  },
+};
 
 // Base Orbit ellipse dimensions
-const RX = 248;
-const RY = 176;
+const RX = 380;
+const RY = 260;
 const OX = -50; // Orbit center offset from viewport center
 
 // Small card dimensions
@@ -33,7 +134,7 @@ interface CardDef {
   imageUrl: string;
 }
 
-// 12 cards evenly distributed around the orbit with curated mockup image assets
+// 16 cards evenly distributed around the orbit with curated mockup image assets
 const CARDS: CardDef[] = [
   {
     id: 0,
@@ -47,7 +148,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 1,
-    a: 30,
+    a: 22.5,
     fw: 210,
     fh: 310,
     fr: 5,
@@ -57,7 +158,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 2,
-    a: 60,
+    a: 45,
     fw: 260,
     fh: 170,
     fr: -6,
@@ -67,7 +168,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 3,
-    a: 90,
+    a: 67.5,
     fw: 220,
     fh: 300,
     fr: 4,
@@ -77,7 +178,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 4,
-    a: 120,
+    a: 90,
     fw: 280,
     fh: 160,
     fr: -5,
@@ -87,7 +188,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 5,
-    a: 150,
+    a: 112.5,
     fw: 200,
     fh: 320,
     fr: 6,
@@ -97,7 +198,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 6,
-    a: 180,
+    a: 135,
     fw: 270,
     fh: 165,
     fr: -4,
@@ -107,7 +208,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 7,
-    a: 210,
+    a: 157.5,
     fw: 215,
     fh: 315,
     fr: -5,
@@ -117,7 +218,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 8,
-    a: 240,
+    a: 180,
     fw: 250,
     fh: 175,
     fr: 3,
@@ -127,7 +228,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 9,
-    a: 270,
+    a: 202.5,
     fw: 230,
     fh: 290,
     fr: -4,
@@ -137,7 +238,7 @@ const CARDS: CardDef[] = [
   },
   {
     id: 10,
-    a: 300,
+    a: 225,
     fw: 275,
     fh: 162,
     fr: 5,
@@ -147,13 +248,53 @@ const CARDS: CardDef[] = [
   },
   {
     id: 11,
-    a: 330,
+    a: 247.5,
     fw: 225,
     fh: 305,
     fr: -6,
     bg: ["#082e1b", "#105d39", "#1b8a53"],
     type: "phone",
     imageUrl: "https://images.unsplash.com/photo-1614680376593-902f74fa0d41?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 12,
+    a: 270,
+    fw: 270,
+    fh: 168,
+    fr: 4,
+    bg: ["#091d2c", "#123c5c", "#1c5d8c"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 13,
+    a: 292.5,
+    fw: 210,
+    fh: 310,
+    fr: -5,
+    bg: ["#2b0d1e", "#561a3c", "#872b5f"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 14,
+    a: 315,
+    fw: 260,
+    fh: 170,
+    fr: 3,
+    bg: ["#12230d", "#284d1c", "#417a2e"],
+    type: "web",
+    imageUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: 15,
+    a: 337.5,
+    fw: 220,
+    fh: 300,
+    fr: -4,
+    bg: ["#2c2409", "#594812", "#8c721c"],
+    type: "phone",
+    imageUrl: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80",
   },
 ];
 
@@ -209,6 +350,23 @@ export default function HeroAnimation() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const innerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const thumbnailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [selectedCard, setSelectedCard] = useState<CardDef | null>(null);
+
+  // Ref to hold the selected card state so that the event listeners (which are bound on mount) can read the updated state
+  const selectedCardRef = useRef<CardDef | null>(null);
+  selectedCardRef.current = selectedCard;
+
+  // Prevent background scroll on body when modal is open
+  useEffect(() => {
+    if (selectedCard) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedCard]);
 
   useEffect(() => {
     if (!wrapRef.current) return;
@@ -246,6 +404,7 @@ export default function HeroAnimation() {
 
     // Event listeners for virtual scroll gestures
     const handleWheel = (e: WheelEvent) => {
+      if (selectedCardRef.current) return; // Prevent scroll interaction when modal is open
       // Prevent default browser scroll to keep page steady
       e.preventDefault();
       targetY += e.deltaY * 0.85; // Natural speed mapping
@@ -254,10 +413,12 @@ export default function HeroAnimation() {
 
     let touchStartY = 0;
     const handleTouchStart = (e: TouchEvent) => {
+      if (selectedCardRef.current) return; // Prevent scroll interaction when modal is open
       touchStartY = e.touches[0].clientY;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
+      if (selectedCardRef.current) return; // Prevent scroll interaction when modal is open
       e.preventDefault();
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;
@@ -267,6 +428,7 @@ export default function HeroAnimation() {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedCardRef.current) return; // Prevent scroll interaction when modal is open
       if (e.key === "ArrowDown" || e.key === "PageDown") {
         e.preventDefault();
         targetY += 80;
@@ -309,6 +471,10 @@ export default function HeroAnimation() {
       // Activation progress (0 to 1) based on scroll offset from top
       const activationProgress = Math.min(1, smoothY / 150);
 
+      // Shift orbit center to the left as scrolling progresses to move small cards left
+      const shiftX = isMobile ? -80 * activationProgress : -200 * activationProgress;
+      const currentOX = OX + shiftX;
+
       cards.forEach((card, i) => {
         const d = CARDS[i];
         const rad = ((d.a + totalAngle) * Math.PI) / 180;
@@ -320,14 +486,16 @@ export default function HeroAnimation() {
         const depth = Math.max(0, cos);
         const t = easeOutCubic(depth * activationProgress);
 
-        // Card size scaling
-        const w = SW + (d.fw * scaleFactor - SW) * t;
-        const h = SH + (d.fh * scaleFactor - SH) * t;
-        const br = SBR + (LBR - SBR) * t;
+        // Card size scaling (uniform size of 513 width and 474 height when fully expanded)
+        const targetFW = 513;
+        const targetFH = 474;
+        const w = SW + (targetFW * scaleFactor - SW) * t;
+        const h = SH + (targetFH * scaleFactor - SH) * t;
+        const br = SBR + (LBR * 1.4 - SBR) * t;
 
         // Push active cards outward slightly to frame them nicely and overlap elegantly
         const spread = 1 + t * 0.14;
-        const x = OX + cos * currentRX * spread;
+        const x = currentOX + cos * currentRX * spread;
         const y = sin * currentRY * spread;
 
         // Dynamic z-index layering (cos maps depth; front = highest z-index)
@@ -356,6 +524,7 @@ export default function HeroAnimation() {
 
     // Auto-rotation tick (slow continuous rounding)
     const ticker = () => {
+      if (selectedCardRef.current) return; // Freeze auto-rotation when modal is open
       orbitDeg += 0.16;
       if (orbitDeg >= 360) orbitDeg -= 360;
       render();
@@ -388,13 +557,14 @@ export default function HeroAnimation() {
           ref={(el) => {
             cardRefs.current[i] = el;
           }}
-          className="absolute overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-white/20 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+          className="absolute overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-white/20 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)] cursor-pointer"
           style={{
             left: "50%",
             top: "50%",
             background: `linear-gradient(145deg, ${card.bg.join(", ")})`,
             willChange: "transform, width, height, z-index",
           }}
+          onClick={() => setSelectedCard(card)}
         >
           <div className="absolute inset-0 w-full h-full">
             <CardInner
@@ -411,6 +581,9 @@ export default function HeroAnimation() {
           </div>
         </div>
       ))}
+
+      {/* Modal Popup for Project Details */}
+      {selectedCard !== null && <ProjectDetailsModal card={selectedCard} onClose={() => setSelectedCard(null)} projectDetails={PROJECT_DETAILS[selectedCard.id]} />}
     </div>
   );
 }
