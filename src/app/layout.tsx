@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Manrope } from "next/font/google";
+import Navbar from "@/components/Share/Navbar";
+import Chatbot from "@/components/Share/Chatbot";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -21,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <body className="relative font-manrope">
+        <Navbar />
         {children}
+        <Chatbot />
       </body>
     </html>
   );

@@ -354,7 +354,10 @@ export default function HeroAnimation() {
 
   // Ref to hold the selected card state so that the event listeners (which are bound on mount) can read the updated state
   const selectedCardRef = useRef<CardDef | null>(null);
-  selectedCardRef.current = selectedCard;
+
+  useEffect(() => {
+    selectedCardRef.current = selectedCard;
+  }, [selectedCard]);
 
   // Prevent background scroll on body when modal is open
   useEffect(() => {
@@ -584,6 +587,12 @@ export default function HeroAnimation() {
 
       {/* Modal Popup for Project Details */}
       {selectedCard !== null && <ProjectDetailsModal card={selectedCard} onClose={() => setSelectedCard(null)} projectDetails={PROJECT_DETAILS[selectedCard.id]} />}
+
+      {/* Bottom Right: Tagline Text */}
+      <div className="absolute bottom-10 right-10 md:bottom-16 md:right-24 z-20 text-left pointer-events-none select-none max-w-[320px] md:max-w-md">
+        <p className="text-[24px] lg:text-[32px] font-normal text-[#3a3a3a] leading-[1.35] tracking-tight">Elevating Brands Through Memorable Digital Experiences</p>
+      </div>
     </div>
   );
 }
+
