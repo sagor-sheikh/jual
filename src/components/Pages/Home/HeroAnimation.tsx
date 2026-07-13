@@ -112,8 +112,8 @@ const OX = -50; // Orbit center offset from viewport center
 // Small card dimensions
 const SW = 60;
 const SH = 46;
-const SBR = 10;
-const LBR = 20;
+const SBR = 4;
+const LBR = 60;
 
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
@@ -484,17 +484,17 @@ export default function HeroAnimation() {
         const cos = Math.cos(rad);
         const sin = Math.sin(rad);
 
-        // Only cards on the front-right side of the circle expand (cos > 0)
-        // Back cards stay as small thumbnails
-        const depth = Math.max(0, cos);
-        const t = easeOutCubic(depth * activationProgress);
+        // Map depth smoothly from -1 (far left, smallest) to 1 (far right, largest)
+        // This creates a nice progressive scaling around the orbit.
+        const depth = (cos + 1) / 2;
+        const t = depth * activationProgress;
 
-        // Card size scaling (uniform size of 513 width and 474 height when fully expanded)
-        const targetFW = 513;
-        const targetFH = 474;
+        // Card size scaling using a uniform card ratio (max size: 342px width by 316px height)
+        const targetFW = 342;
+        const targetFH = 316;
         const w = SW + (targetFW * scaleFactor - SW) * t;
         const h = SH + (targetFH * scaleFactor - SH) * t;
-        const br = SBR + (LBR * 1.4 - SBR) * t;
+        const br = SBR + (LBR - SBR) * t;
 
         // Push active cards outward slightly to frame them nicely and overlap elegantly
         const spread = 1 + t * 0.14;
