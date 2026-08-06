@@ -448,10 +448,61 @@ export default function HeroAnimation() {
     window.addEventListener("keydown", handleKeyDown, { passive: false });
 
     const render = () => {
-      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-      const scaleFactor = isMobile ? 0.65 : 1.0;
-      const adaptiveRX = isMobile ? window.innerWidth * 0.32 : RX;
-      const adaptiveRY = isMobile ? window.innerHeight * 0.18 : RY;
+      const width = typeof window !== "undefined" ? window.innerWidth : 1440;
+      const height = typeof window !== "undefined" ? window.innerHeight : 900;
+
+      // Activation progress (0 to 1) based on scroll offset from top
+      const activationProgress = Math.min(1, smoothY / 150);
+
+      // Determine responsive factors based on screen width
+      let scaleFactor = 1.0;
+      let adaptiveRX = RX;
+      let adaptiveRY = RY;
+      let adaptiveOX = OX;
+      let shiftX = -200 * activationProgress;
+      let orbitOffsetY = 0;
+
+      if (width < 480) {
+        // Portrait mobile
+        scaleFactor = 0.55;
+        adaptiveRX = width * 0.32;
+        adaptiveRY = Math.min(130, height * 0.15);
+        adaptiveOX = -20;
+        shiftX = -40 * activationProgress;
+        orbitOffsetY = -60;
+      } else if (width < 768) {
+        // Landscape mobile / Large mobile
+        scaleFactor = 0.65;
+        adaptiveRX = width * 0.32;
+        adaptiveRY = Math.min(160, height * 0.16);
+        adaptiveOX = -30;
+        shiftX = -60 * activationProgress;
+        orbitOffsetY = -50;
+      } else if (width < 1024) {
+        // Tablet
+        scaleFactor = 0.75;
+        adaptiveRX = Math.min(270, width * 0.32);
+        adaptiveRY = Math.min(190, height * 0.18);
+        adaptiveOX = -40;
+        shiftX = -120 * activationProgress;
+        orbitOffsetY = -30;
+      } else if (width < 1280) {
+        // Laptop / Small Desktop
+        scaleFactor = 0.85;
+        adaptiveRX = 340;
+        adaptiveRY = 230;
+        adaptiveOX = -50;
+        shiftX = -165 * activationProgress;
+        orbitOffsetY = 0;
+      } else {
+        // Desktop / Large screen
+        scaleFactor = 1.0;
+        adaptiveRX = RX;
+        adaptiveRY = RY;
+        adaptiveOX = OX;
+        shiftX = -200 * activationProgress;
+        orbitOffsetY = 0;
+      }
 
       // Smooth interpolation (lerping) for virtual scroll inertia
       smoothY += (targetY - smoothY) * 0.08;
@@ -470,13 +521,7 @@ export default function HeroAnimation() {
       const centrifugalStretch = 1 + Math.min(speed * 0.00008, 0.12);
       const currentRX = adaptiveRX * centrifugalStretch;
       const currentRY = adaptiveRY * centrifugalStretch;
-
-      // Activation progress (0 to 1) based on scroll offset from top
-      const activationProgress = Math.min(1, smoothY / 150);
-
-      // Shift orbit center to the left as scrolling progresses to move small cards left
-      const shiftX = isMobile ? -80 * activationProgress : -200 * activationProgress;
-      const currentOX = OX + shiftX;
+      const currentOX = adaptiveOX + shiftX;
 
       cards.forEach((card, i) => {
         const d = CARDS[i];
@@ -499,7 +544,7 @@ export default function HeroAnimation() {
         // Push active cards outward slightly to frame them nicely and overlap elegantly
         const spread = 1 + t * 0.14;
         const x = currentOX + cos * currentRX * spread;
-        const y = sin * currentRY * spread;
+        const y = orbitOffsetY + sin * currentRY * spread;
 
         // Dynamic z-index layering (cos maps depth; front = highest z-index)
         const dynamicZ = Math.round((cos + 1) * 30) + 5;
@@ -532,6 +577,9 @@ export default function HeroAnimation() {
       if (orbitDeg >= 360) orbitDeg -= 360;
       render();
     };
+
+    // Call render once on mount to avoid any flash of unpositioned cards
+    render();
 
     gsap.ticker.add(ticker);
 
@@ -589,8 +637,8 @@ export default function HeroAnimation() {
       {selectedCard !== null && <ProjectDetailsModal card={selectedCard} onClose={() => setSelectedCard(null)} projectDetails={PROJECT_DETAILS[selectedCard.id]} />}
 
       {/* Bottom Right: Tagline Text */}
-      <div className="absolute bottom-10 right-10 md:bottom-16 md:right-24 z-20 text-left pointer-events-none select-none max-w-[320px] md:max-w-md">
-        <p className="text-[24px] lg:text-[32px] font-normal text-[#3a3a3a] leading-[1.35] tracking-tight">Elevating Brands Through Memorable Digital Experiences</p>
+      <div className="absolute bottom-24 right-6 md:bottom-16 md:right-16 lg:right-24 z-20 text-left pointer-events-none select-none max-w-[260px] sm:max-w-[320px] md:max-w-md">
+        <p className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] font-normal text-[#3a3a3a] leading-[1.35] tracking-tight">Elevating Brands Through Memorable Digital Experiences</p>
       </div>
     </div>
   );
