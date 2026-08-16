@@ -144,7 +144,7 @@ const CARDS: CardDef[] = [
     fr: -3,
     bg: ["#052516", "#0d4d31", "#15774c"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/dribbblemockup.png",
   },
   {
     id: 1,
@@ -154,7 +154,7 @@ const CARDS: CardDef[] = [
     fr: 5,
     bg: ["#0b1f3c", "#173b70", "#265da8"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/phone.png",
   },
   {
     id: 2,
@@ -164,7 +164,7 @@ const CARDS: CardDef[] = [
     fr: -6,
     bg: ["#2d0e0e", "#5a1f1f", "#8d3434"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/healtcare.png",
   },
   {
     id: 3,
@@ -174,7 +174,7 @@ const CARDS: CardDef[] = [
     fr: 4,
     bg: ["#241505", "#4a2c0a", "#784b15"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/travelapp.png",
   },
   {
     id: 4,
@@ -184,7 +184,7 @@ const CARDS: CardDef[] = [
     fr: -5,
     bg: ["#1c0c2b", "#3d1b5c", "#653194"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/dribbbleattecementlumora.png",
   },
   {
     id: 5,
@@ -194,7 +194,7 @@ const CARDS: CardDef[] = [
     fr: 6,
     bg: ["#0c2527", "#1d4c50", "#2f7b80"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/travelapptwo.png",
   },
   {
     id: 6,
@@ -204,7 +204,7 @@ const CARDS: CardDef[] = [
     fr: -4,
     bg: ["#1e2509", "#3f4d17", "#637827"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/productivity.png",
   },
   {
     id: 7,
@@ -214,7 +214,7 @@ const CARDS: CardDef[] = [
     fr: -5,
     bg: ["#220d2b", "#491e5c", "#7b3699"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/travelappthree.png",
   },
   {
     id: 8,
@@ -224,7 +224,7 @@ const CARDS: CardDef[] = [
     fr: 3,
     bg: ["#092628", "#155054", "#237e84"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/fintch.png",
   },
   {
     id: 9,
@@ -234,7 +234,7 @@ const CARDS: CardDef[] = [
     fr: -4,
     bg: ["#2d1b09", "#5b3614", "#925722"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/travelapp-1.png",
   },
   {
     id: 10,
@@ -244,7 +244,7 @@ const CARDS: CardDef[] = [
     fr: 5,
     bg: ["#151c27", "#2b394f", "#445877"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/dribbbleattecementplane.png",
   },
   {
     id: 11,
@@ -254,7 +254,7 @@ const CARDS: CardDef[] = [
     fr: -6,
     bg: ["#082e1b", "#105d39", "#1b8a53"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1614680376593-902f74fa0d41?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/travelapp.png",
   },
   {
     id: 12,
@@ -264,7 +264,7 @@ const CARDS: CardDef[] = [
     fr: 4,
     bg: ["#091d2c", "#123c5c", "#1c5d8c"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/car.png",
   },
   {
     id: 13,
@@ -274,7 +274,7 @@ const CARDS: CardDef[] = [
     fr: -5,
     bg: ["#2b0d1e", "#561a3c", "#872b5f"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/phone.png",
   },
   {
     id: 14,
@@ -284,7 +284,7 @@ const CARDS: CardDef[] = [
     fr: 3,
     bg: ["#12230d", "#284d1c", "#417a2e"],
     type: "web",
-    imageUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/pealesate.png",
   },
   {
     id: 15,
@@ -294,7 +294,7 @@ const CARDS: CardDef[] = [
     fr: -4,
     bg: ["#2c2409", "#594812", "#8c721c"],
     type: "phone",
-    imageUrl: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80",
+    imageUrl: "/images/healtcare.png",
   },
 ];
 
@@ -318,28 +318,8 @@ function CardInner({ type, imageUrl, id, tRef, iRef }: CardInnerProps) {
       {/* Thumbnail overlay: slight darkening when small (fades out as it expands) */}
       <div ref={tRef} className="absolute inset-0 bg-black/25 pointer-events-none z-5 transition-opacity" />
 
-      {/* Device mock frame overlay (fades in as it expands) */}
-      <div ref={iRef} className="absolute inset-0 flex flex-col pointer-events-none opacity-0 z-10">
-        {type === "web" ? (
-          <div className="shrink-0 h-6 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center gap-1.5 px-3">
-            <div className="flex gap-1">
-              <div className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
-              <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
-              <div className="w-1.5 h-1.5 rounded-full bg-green-500/80" />
-            </div>
-            <div className="flex-1 mx-4 h-3.5 bg-white/10 rounded flex items-center px-2 text-[8px] text-white/50 overflow-hidden font-sans select-none">{id % 2 === 0 ? "https://juice.design/agency" : "https://juice.creative/portfolio"}</div>
-            <div className="w-3 h-0.5 bg-white/30 rounded" />
-          </div>
-        ) : (
-          <div className="shrink-0 h-6 bg-black/40 backdrop-blur-md flex items-center justify-between px-3 text-[9px] font-sans text-white/70 select-none">
-            <span>09:41</span>
-            <div className="flex items-center gap-1">
-              <div className="w-2.5 h-1.5 bg-white/60 rounded-xs" />
-              <div className="w-1.5 h-1.5 bg-white/60 rounded-full" />
-            </div>
-          </div>
-        )}
-      </div>
+      {/* Device mock frame overlay (unused, kept empty to maintain ref mapping) */}
+      <div ref={iRef} className="hidden pointer-events-none" />
     </div>
   );
 }
@@ -643,4 +623,3 @@ export default function HeroAnimation() {
     </div>
   );
 }
-

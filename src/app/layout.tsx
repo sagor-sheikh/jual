@@ -11,8 +11,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Greenboard - Hello World",
-  description: "Architect Grade Boards",
+  title: "JuiceLab - It agency",
+  description: "JuiceLab - It agency",
 };
 
 export default function RootLayout({

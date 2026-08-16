@@ -38,12 +38,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Brand Identity Design",
     sectionDesc: "Designed to optimize user flow and deliver a premium agency presentation through custom 3D web graphics and fluid typography.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1542744094-2ab25be78b90?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecement.png",
+      "/images/dribbbleattecementlumora.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+      "/images/productivity.png",
+      "/images/jemi.png"
     ]
   },
   1: {
@@ -53,12 +53,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Social App Interface",
     sectionDesc: "Created immersive social connection patterns with custom haptics, gesture-based card navigation, and micro-interactions.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp.png",
+      "/images/travelapp-1.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapptwo.png",
+      "/images/travelappthree.png"
     ]
   },
   2: {
@@ -68,12 +68,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Headless E-Commerce System",
     sectionDesc: "Engineered high-performance Shopify custom integration with instant cart validation, custom checkouts, and clean product grids.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1472851294608-062f824d296e?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbblemockup.png",
+      "/images/dribbbleattecementplane.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1472851294608-062f824d296e?auto=format&fit=crop&w=600&q=80"
+      "/images/jemi.png",
+      "/images/fintch.png"
     ]
   },
   3: {
@@ -83,12 +83,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "IoT Ecosystem Dashboard",
     sectionDesc: "Constructed intuitive system control layout showing temperature dials, lighting sliders, and live security cameras with fluid gestures.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapptwo.png",
+      "/images/travelappthree.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp.png",
+      "/images/travelapp-1.png"
     ]
   },
   4: {
@@ -98,12 +98,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "DeFi & NFT Platform",
     sectionDesc: "Created decentralized art portal supporting wallet adapters, dynamic transaction status tracking, and decentralized storage.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=600&q=80"
+      "/images/fintch.png",
+      "/images/jemi.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1644016121848-80f43fc24312?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecementlumora.png",
+      "/images/productivity.png"
     ]
   },
   5: {
@@ -113,12 +113,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Vector Map Navigation",
     sectionDesc: "Implemented offline maps, custom vector layers, and hiking path generation algorithm with dynamic GPS updating.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp-1.png",
+      "/images/travelapptwo.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1533240332313-0db49b439ad3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+      "/images/travelappthree.png",
+      "/images/travelapp.png"
     ]
   },
   6: {
@@ -128,12 +128,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Interactive Landing Page",
     sectionDesc: "Developed custom shaders and WebGL canvas layers reflecting typography distortions, scroll triggers, and mouse hover fluid maps.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecement.png",
+      "/images/productivity.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80"
+      "/images/car.png",
+      "/images/fintch.png"
     ]
   },
   7: {
@@ -143,12 +143,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Wellness Audio Player",
     sectionDesc: "Designed customized sound wave animations, timer utilities, and audio streaming pipeline with offline downloads.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80"
+      "/images/travelappthree.png",
+      "/images/travelapp.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp-1.png",
+      "/images/travelapptwo.png"
     ]
   },
   8: {
@@ -158,12 +158,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Enterprise Metrics Portal",
     sectionDesc: "Constructed high-speed analytics pipeline using custom canvas grids to render hundreds of metrics points in real-time.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+      "/images/fintch.png",
+      "/images/productivity.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecementlumora.png",
+      "/images/dribbbleattecementplane.png"
     ]
   },
   9: {
@@ -173,12 +173,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Voice Profile Connections",
     sectionDesc: "Integrated audio recorder widgets, profile match animations, and a secure real-time messaging server.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp-1.png",
+      "/images/travelappthree.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapptwo.png",
+      "/images/travelapp.png"
     ]
   },
   10: {
@@ -188,12 +188,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "SaaS Infrastructure Site",
     sectionDesc: "Crafted automated load balancer charts, pricing models, and clean visual documentation for cloud infrastructure developers.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecementplane.png",
+      "/images/jemi.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbblemockup.png",
+      "/images/fintch.png"
     ]
   },
   11: {
@@ -203,12 +203,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Healthy Food Dispatch",
     sectionDesc: "Developed custom delivery maps, calendar scheduling selectors, and a nutrition calculator page with animations.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp.png",
+      "/images/travelapptwo.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1526367790999-0150786486a9?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80"
+      "/images/travelappthree.png",
+      "/images/travelapp-1.png"
     ]
   },
   12: {
@@ -218,12 +218,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Interactive Fluid Marketing",
     sectionDesc: "Developed high-performance dynamic fluid backgrounds reflecting user touch, drag, and mouse click vectors.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80"
+      "/images/car.png",
+      "/images/dribbbleattecement.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbbleattecementlumora.png",
+      "/images/fintch.png"
     ]
   },
   13: {
@@ -233,12 +233,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "P2P Encrypted Chat",
     sectionDesc: "Constructed local message caches, key exchange screens, and instant push notification bindings.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp-1.png",
+      "/images/travelapptwo.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1520333789090-1afc82db536a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80"
+      "/images/travelappthree.png",
+      "/images/travelapp.png"
     ]
   },
   14: {
@@ -248,12 +248,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Enterprise Scrum Interface",
     sectionDesc: "Designed complex gantt chart visualizations, drag-and-drop kanban columns, and automatic task scheduler widgets.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80"
+      "/images/pealesate.png",
+      "/images/productivity.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80"
+      "/images/dribbblemockup.png",
+      "/images/dribbbleattecement.png"
     ]
   },
   15: {
@@ -263,12 +263,12 @@ const MOCK_PROJECTS_EXTENDED: Record<number, {
     sectionName: "Podcast Streaming Queue",
     sectionDesc: "Designed customized sound wave visualizations, smart queue managers, and offline audio syncing databases.",
     secondaryImages: [
-      "https://images.unsplash.com/photo-1487180142328-054b783fc471?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1484755560693-a4074577af3a?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapptwo.png",
+      "/images/travelappthree.png"
     ],
     bentoImages: [
-      "https://images.unsplash.com/photo-1610433572201-110753c6cff9?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1487180142328-054b783fc471?auto=format&fit=crop&w=600&q=80"
+      "/images/travelapp.png",
+      "/images/travelapp-1.png"
     ]
   }
 };
