@@ -588,7 +588,7 @@ export default function HeroAnimation() {
           ref={(el) => {
             cardRefs.current[i] = el;
           }}
-          className="absolute overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-white/20 transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)] cursor-pointer"
+          className="absolute overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.18)] cursor-pointer"
           style={{
             left: "50%",
             top: "50%",
