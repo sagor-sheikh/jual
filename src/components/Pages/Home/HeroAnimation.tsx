@@ -7,10 +7,10 @@ import ProjectDetailsModal from "./ProjectDetailsModal";
 // Rich metadata content mapping for project details popup modal
 const PROJECT_DETAILS: Record<number, { title: string; subtitle: string; desc: string; tags: string[] }> = {
   0: {
-    title: "Juice Design Agency",
-    subtitle: "UX/UI DESIGN & INTERACTIVE DEVELOPMENT",
-    desc: "A premium, award-winning creative agency portfolio featuring smooth WebGL transitions, glassmorphic layouts, and bespoke branding concepts.",
-    tags: ["React", "Next.js", "GSAP", "TailwindCSS"],
+    title: "Ribeca",
+    subtitle: "AI SURF & HEALTH PLATFORM",
+    desc: "A modern AI-powered health surf app that helps users monitor their habits, track sports performance with custom swim metrics, track personal and athletic insights and manage outdoor sports all in one place.",
+    tags: ["Next.js", "AI Surf", "Sports Tech", "TailwindCSS"],
   },
   1: {
     title: "Vibe Social App",
@@ -142,9 +142,9 @@ const CARDS: CardDef[] = [
     fw: 270,
     fh: 168,
     fr: -3,
-    bg: ["#052516", "#0d4d31", "#15774c"],
+    bg: ["#0e2a38", "#1a495f", "#2c728e"],
     type: "web",
-    imageUrl: "/images/dribbblemockup.png",
+    imageUrl: "/images/rideone.png",
   },
   {
     id: 1,
