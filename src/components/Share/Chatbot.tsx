@@ -87,6 +87,15 @@ export default function Chatbot() {
     }
   }, [messages, isTyping]);
 
+  // Listen for custom trigger to open chatbot
+  useEffect(() => {
+    const handleOpenChatbot = () => {
+      setIsOpen(true);
+    };
+    window.addEventListener("open-chatbot", handleOpenChatbot);
+    return () => window.removeEventListener("open-chatbot", handleOpenChatbot);
+  }, []);
+
   // Handle quick option clicks
   const handleQuickOption = (option: string) => {
     if (isTyping) return;
