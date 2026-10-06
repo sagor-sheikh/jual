@@ -43,10 +43,10 @@ const PROJECT_DETAILS: Record<number, { title: string; subtitle: string; desc: s
     tags: ["React Native", "Mapbox", "Node.js", "PostgreSQL"],
   },
   6: {
-    title: "Chroma Creative Studio",
-    subtitle: "INTERACTIVE BRAND EXHIBITION",
-    desc: "Immersive landing page showcasing high-end photography, cinematic video banners, and experimental typographic layout structures.",
-    tags: ["Three.js", "GSAP", "Sass", "Webpack"],
+    title: "Fitness",
+    subtitle: "AI-POWERED HEALTHCARE & FITNESS APP",
+    desc: "A modern AI-powered healthcare app that helps users monitor their health, book doctor appointments, access telemedicine, receive personalized health insights and manage medical care all in one place.",
+    tags: ["UI/UX", "Mobile App", "Health & Fitness", "Next.js"],
   },
   7: {
     title: "Zenith Meditation App",
@@ -204,7 +204,7 @@ const CARDS: CardDef[] = [
     fr: -4,
     bg: ["#1e2509", "#3f4d17", "#637827"],
     type: "web",
-    imageUrl: "/images/productivity.png",
+    imageUrl: "/images/fitnessblack1.png",
   },
   {
     id: 7,
@@ -214,7 +214,7 @@ const CARDS: CardDef[] = [
     fr: -5,
     bg: ["#220d2b", "#491e5c", "#7b3699"],
     type: "phone",
-    imageUrl: "/images/travelappthree.png",
+    imageUrl: "/images/fitnessblack1.png",
   },
   {
     id: 8,
