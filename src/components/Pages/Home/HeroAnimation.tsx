@@ -19,10 +19,10 @@ const PROJECT_DETAILS: Record<number, { title: string; subtitle: string; desc: s
     tags: ["React Native", "Expo", "Framer Motion", "Zustand"],
   },
   2: {
-    title: "EcoSphere E-Commerce",
-    subtitle: "RESPONSIVE HEADLESS COMMERCE",
-    desc: "Sustainable online retail experience with real-time checkout integration, custom cart workflows, and elegant material-style presentation.",
-    tags: ["Shopify", "TailwindCSS", "Next.js", "Stripe"],
+    title: "Docuverse",
+    subtitle: "AI HEALTHCARE & TELEMEDICINE APP",
+    desc: "A modern AI-powered health app that helps users monitor their habits, track and book appointments, access telemedicine, receive personalized health insights and manage medical care all in one place.",
+    tags: ["Healthcare", "AI Health", "React Native", "TailwindCSS"],
   },
   3: {
     title: "Aura Smart Home",
@@ -162,9 +162,9 @@ const CARDS: CardDef[] = [
     fw: 260,
     fh: 170,
     fr: -6,
-    bg: ["#2d0e0e", "#5a1f1f", "#8d3434"],
-    type: "web",
-    imageUrl: "/images/healtcare.png",
+    bg: ["#1c3823", "#2d5a37", "#487e54"],
+    type: "phone",
+    imageUrl: "/images/dcuverse1.png",
   },
   {
     id: 3,
