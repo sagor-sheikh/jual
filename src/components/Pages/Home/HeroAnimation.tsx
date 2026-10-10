@@ -67,10 +67,10 @@ const PROJECT_DETAILS: Record<number, { title: string; subtitle: string; desc: s
     tags: ["React Native", "Zustand", "Express", "MongoDB"],
   },
   10: {
-    title: "Nebula Cloud Hosting",
-    subtitle: "SaaS INFRASTRUCTURE SITE",
-    desc: "High-performance marketing portal for scalable VPS hosting, load balancer metrics, and developer-friendly documentation interfaces.",
-    tags: ["Next.js", "TailwindCSS", "TypeScript", "MDX"],
+    title: "Aerovista Private Aviation",
+    subtitle: "LUXURY FLEET & CHARTER PLATFORM",
+    desc: "An ultra-luxury private aviation platform that streamlines on-demand charter bookings, live fleet telemetry, personalized concierge itineraries, and global aircraft management.",
+    tags: ["Aviation", "Next.js", "Fleet Telemetry", "TailwindCSS"],
   },
   11: {
     title: "Leaf Meal Delivery",
@@ -254,7 +254,7 @@ const CARDS: CardDef[] = [
     fr: -6,
     bg: ["#082e1b", "#105d39", "#1b8a53"],
     type: "phone",
-    imageUrl: "/images/travelapp.png",
+    imageUrl: "/images/travelappthree.png",
   },
   {
     id: 12,
@@ -294,7 +294,7 @@ const CARDS: CardDef[] = [
     fr: -4,
     bg: ["#2c2409", "#594812", "#8c721c"],
     type: "phone",
-    imageUrl: "/images/healtcare.png",
+    imageUrl: "/images/dribbbleattecement.png",
   },
 ];
 

@@ -1,105 +1,251 @@
 "use client";
 
 import React from "react";
-import { ArrowUpRight, BarChart3, TrendingUp, Activity, Database } from "lucide-react";
-import {
-  BrowserMockup,
-  PhoneMockup,
-  ProjectMetaTable,
-  MetricCard,
-  ProjectCTA,
-} from "./shared/ProjectSharedComponents";
+
+// Dotted Globe / Circle Logo
+const DottedGlobe = ({ className = "", size = 18 }: { className?: string; size?: number }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor">
+    {/* Center dot */}
+    <circle cx="12" cy="12" r="1.2" />
+
+    {/* Inner ring (r=4.5) */}
+    <circle cx="16.5" cy="12" r="1" />
+    <circle cx="14.25" cy="15.9" r="1" />
+    <circle cx="9.75" cy="15.9" r="1" />
+    <circle cx="7.5" cy="12" r="1" />
+    <circle cx="9.75" cy="8.1" r="1" />
+    <circle cx="14.25" cy="8.1" r="1" />
+
+    {/* Outer ring (r=8.5) */}
+    <circle cx="20.5" cy="12" r="0.8" />
+    <circle cx="19.36" cy="16.25" r="0.8" />
+    <circle cx="16.25" cy="19.36" r="0.8" />
+    <circle cx="12" cy="20.5" r="0.8" />
+    <circle cx="7.75" cy="19.36" r="0.8" />
+    <circle cx="4.64" cy="16.25" r="0.8" />
+    <circle cx="3.5" cy="12" r="0.8" />
+    <circle cx="4.64" cy="7.75" r="0.8" />
+    <circle cx="7.75" cy="4.64" r="0.8" />
+    <circle cx="12" cy="3.5" r="0.8" />
+    <circle cx="16.25" cy="4.64" r="0.8" />
+    <circle cx="19.36" cy="7.75" r="0.8" />
+  </svg>
+);
 
 export default function Card08ApexAnalytics() {
   return (
-    <div className="font-sans text-neutral-800">
-      {/* Hero Showcase Banner */}
-      <div className="mb-12">
-        <div
-          className="w-full aspect-[16/10] md:aspect-[21/9] rounded-[24px] bg-cover bg-center shadow-sm border border-neutral-200/40 relative overflow-hidden"
-          style={{ backgroundImage: `url('/images/fintch.png')` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061b1c]/85 via-transparent to-transparent flex items-end p-6 md:p-10">
-            <div>
-              <span className="px-3 py-1 bg-cyan-500/20 text-cyan-200 border border-cyan-500/30 rounded-full text-xs font-medium tracking-wide uppercase">
-                Enterprise Metrics Portal & Real-time Viz
-              </span>
-              <h1 className="text-2xl md:text-5xl font-extrabold text-white mt-2 tracking-tight">
-                Apex Analytics Dashboard
-              </h1>
+    <div className="max-w-[1440px] mx-auto font-sans text-neutral-800">
+      {/* 1. Hero Showcase Section (zixowhite1.png) */}
+      <div className="w-full mb-12 md:mb-14 lg:mb-20">
+        <div className="w-full overflow-hidden rounded-[22px] md:rounded-[32px] border border-neutral-200/50 shadow-sm bg-[#ebe9e4]">
+          <img
+            src="/images/zixowhite1.png"
+            alt="Zixo Financial App Showcase"
+            className="w-full h-auto block object-cover"
+          />
+        </div>
+      </div>
+
+      {/* 2. Overview & Details Section */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pb-30 lg:pb-50">
+        {/* Left Column: Overview Description */}
+        <div className="md:col-span-8 flex flex-col justify-start">
+          <span className="text-base lg:text-lg font-medium tracking-wider text-black uppercase mb-6 lg:mb-8 block">
+            Introduction
+          </span>
+          <p className="text-xl md:text-2xl lg:text-[28px] font-normal text-black/80 leading-relaxed max-w-2xl mb-8">
+            A modern AI-powered health surf app that helps users monitor their habits, track sports performance with custom swim metrics, track personal and athletic insights and manage outdoor sports all in one place.
+          </p>
+          <div>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-chatbot"));
+                }
+              }}
+              className="px-7 py-3.5 bg-[#111111] hover:bg-black text-white rounded-full text-sm font-medium hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_8px_20px_rgba(0,0,0,0.25)] cursor-pointer inline-flex items-center gap-2"
+            >
+              <span>Live Site</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Right Column: Spec Details */}
+        <div className="md:col-span-4">
+          <span className="text-base lg:text-lg font-medium tracking-wider text-black uppercase mb-6 lg:mb-8 block">
+            Details
+          </span>
+          <div className="divide-y divide-neutral-200/70 border-t border-b border-neutral-200/70 text-xs sm:text-sm">
+            <div className="py-3 lg:py-4 flex justify-between items-center">
+              <span className="text-black/70 font-normal">Client</span>
+              <span className="font-normal text-black">Zixo</span>
+            </div>
+            <div className="py-3 lg:py-4 flex justify-between items-center">
+              <span className="text-black/70 font-normal">Category</span>
+              <span className="font-normal text-black">Fintech</span>
+            </div>
+            <div className="py-3 lg:py-4 flex justify-between items-center">
+              <span className="text-black/70 font-normal">Role</span>
+              <span className="font-normal text-black">Lead UI/UX &amp; Web</span>
+            </div>
+            <div className="py-3 lg:py-4 flex justify-between items-center">
+              <span className="text-black/70 font-normal">Year</span>
+              <span className="font-normal text-black">2026</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Case Overview & Metadata */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 mb-16">
-        <div className="md:col-span-7 flex flex-col justify-between gap-6">
-          <div>
-            <h4 className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase mb-3">
-              Data Infrastructure
-            </h4>
-            <p className="text-xl md:text-2xl font-light text-neutral-800 leading-relaxed">
-              Apex renders millions of live data points for Fortune 500 financial executives, transforming complex ingestion streams into actionable real-time cohort matrices and retention heatmaps.
-            </p>
-            <p className="text-sm text-neutral-500 mt-4 leading-relaxed">
-              Engineered with WebGL canvas acceleration, custom aggregation pipelines, and instantaneous drag-and-drop widget customization.
-            </p>
-          </div>
-          <div>
-            <button
-              onClick={() => alert("Launching Live Apex Enterprise Sandbox...")}
-              className="px-6 py-3 bg-neutral-950 text-white rounded-full text-xs font-semibold hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer inline-flex items-center gap-2"
-            >
-              <span>Explore Analytics Console</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
+      {/* 3. Dual Mockup Section (zixowhite2.png & zixowhite3.png) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-14 md:mb-18 lg:mb-28">
+        <div className="w-full overflow-hidden rounded-[20px] md:rounded-[28px] lg:rounded-[40px] border border-neutral-200/50 shadow-sm bg-[#cfcac2]">
+          <img
+            src="/images/zixowhite2.png"
+            alt="Zixo Desktop Dashboard Interface"
+            className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.01]"
+          />
         </div>
-
-        <div className="md:col-span-5">
-          <h4 className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase mb-3">
-            Specs
-          </h4>
-          <ProjectMetaTable
-            client="Apex Financial Global NY"
-            duration="12 Weeks"
-            role="Lead Frontend Architect"
-            tags={["Next.js", "React Query", "ApexCharts", "Zustand", "ClickHouse"]}
+        <div className="w-full overflow-hidden rounded-[20px] md:rounded-[28px] lg:rounded-[40px] border border-neutral-200/50 shadow-sm bg-[#dedbd6]">
+          <img
+            src="/images/zixowhite3.png"
+            alt="Zixo Manage Your Cards Mobile Interface"
+            className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.01]"
           />
         </div>
       </div>
 
-      {/* Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-        <MetricCard value="10M+" label="Events / Sec" sublabel="Live ingestion rate" />
-        <MetricCard value="15ms" label="Query Latency" sublabel="P99 response time" />
-        <MetricCard value="$4.2B" label="Portfolio Tracked" sublabel="Assets under management" />
-        <MetricCard value="99.999%" label="SLA Guarantee" sublabel="Fault tolerant cluster" />
+      {/* 4. Text Row: Brand Identity */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start mb-10 md:mb-12 lg:mb-15">
+        <div className="md:col-span-4">
+          <h3 className="text-base md:text-lg font-medium text-black tracking-tight">
+            Brand Identity
+          </h3>
+        </div>
+        <div className="md:col-span-8">
+          <p className="text-2xl lg:text-[28px] text-black/80 leading-relaxed max-w-2xl">
+            Designed to deliver a calm, empowering and human-centered healthcare and outdoor surf experience through a modern visual identity that inspired confidence and care.
+          </p>
+        </div>
       </div>
 
-      {/* Dual Showcase */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-16 bg-neutral-50 p-6 md:p-12 rounded-3xl border border-neutral-200/40">
-        <div>
-          <BrowserMockup imageUrl="/images/productivity.png" url="https://apexanalytics.io/command-center" />
+      {/* 5. Bento Showcase (zixowhite5.png) */}
+      <div className="w-full mb-16 md:mb-20 lg:mb-30">
+        <div className="w-full overflow-hidden rounded-[22px] md:rounded-4xl border border-neutral-200/50 shadow-sm bg-[#f5f4f0]">
+          <img
+            src="/images/zixowhite5.png"
+            alt="Zixo App Ecosystem & Bento Grid"
+            className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.005]"
+          />
         </div>
-        <div className="flex flex-col justify-center">
-          <span className="inline-block px-3 py-1 rounded-full text-[9px] font-bold tracking-widest bg-cyan-100 text-cyan-900 uppercase mb-4 w-fit">
-            Telemetry Grid
-          </span>
-          <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-neutral-900 mb-4">
-            Custom Visual Heatmaps & Metric Alerts
+      </div>
+
+      {/* 6. Text Row: Website Design */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start mb-10 md:mb-12 lg:mb-15">
+        <div className="md:col-span-4">
+          <h3 className="text-base md:text-lg font-medium text-black tracking-tight">
+            Website Design
           </h3>
-          <p className="text-neutral-600 text-sm leading-relaxed mb-6">
-            Configure automated thresholds that trigger PagerDuty alerts and Slack notifications when pipeline deviations exceed tolerance.
+        </div>
+        <div className="md:col-span-8">
+          <p className="text-2xl lg:text-[28px] text-black/80 leading-relaxed max-w-2xl">
+            Designed to deliver a calm, trustworthy, and human-centered healthcare experience through a modern visual identity that inspires confidence and care.
           </p>
-          <div className="flex justify-center lg:justify-start">
-            <PhoneMockup imageUrl="/images/dribbbleattecementlumora.png" />
+        </div>
+      </div>
+
+      {/* 7. Full-width Laptop Showcase (zixowhite6.png) */}
+      <div className="w-full mb-16 md:mb-20 lg:mb-30">
+        <div className="w-full overflow-hidden rounded-[22px] md:rounded-[32px] border border-neutral-200/50 shadow-sm bg-[#f2f1ed]">
+          <img
+            src="/images/zixowhite6.png"
+            alt="Effortless Payments & Intelligent Finance Laptop Display"
+            className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.005]"
+          />
+        </div>
+      </div>
+
+      {/* 8. Text Row: The Result */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start mb-10 md:mb-12 lg:mb-15">
+        <div className="md:col-span-4">
+          <h3 className="text-base md:text-lg font-medium text-black tracking-tight">
+            The Result
+          </h3>
+        </div>
+        <div className="md:col-span-8">
+          <p className="text-2xl lg:text-[28px] text-black/80 leading-relaxed max-w-2xl">
+            Designed to deliver a calm, empowering and human-centered experience through a modern visual identity that inspired confidence and care.
+          </p>
+        </div>
+      </div>
+
+      {/* 9. User Feedback & Metrics Bento Graphic (zixowhite7.png) */}
+      <div className="w-full mb-16 md:mb-20 lg:mb-30">
+        <div className="w-full overflow-hidden rounded-[22px] md:rounded-[32px] border border-neutral-200/50 shadow-sm bg-[#faf9f6]">
+          <img
+            src="/images/zixowhite7.png"
+            alt="User Feedback and Analytics Dashboard"
+            className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.005]"
+          />
+        </div>
+      </div>
+
+      {/* 10. Want to see More? Dual Mockup Cards (zixowhite8.png & zixowhite9.png) */}
+      <div className="mb-16 md:mb-20 lg:mb-30">
+        <h4 className="text-[28px] lg:text-[32px] font-medium tracking-widest text-black mb-12 lg:mb-15">
+          Want to see More?
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+          <div className="w-full overflow-hidden rounded-[20px] md:rounded-[28px] border border-neutral-200/50 shadow-sm bg-[#121415]">
+            <img
+              src="/images/zixowhite8.png"
+              alt="Health & Activity Tracker Interface Mockup"
+              className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.01]"
+            />
+          </div>
+          <div className="w-full overflow-hidden rounded-[20px] md:rounded-[28px] border border-neutral-200/50 shadow-sm bg-[#1f3a14]">
+            <img
+              src="/images/zixowhite9.png"
+              alt="Docuverse Health Updates App Mockup"
+              className="w-full h-auto block object-cover transition-transform duration-500 hover:scale-[1.01]"
+            />
           </div>
         </div>
       </div>
 
-      <ProjectCTA projectTitle="Apex Analytics Dashboard" />
+      {/* 11. Call to Action Banner */}
+      <div className="w-full">
+        <div className="relative w-full rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden bg-black text-white text-center py-20 sm:py-28 md:py-36 px-6 sm:px-8 flex flex-col items-center justify-center min-h-[420px] md:min-h-[500px]">
+          {/* Background Image */}
+          <img
+            src="/images/unlockbg.png"
+            alt="Unlock Access Background"
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+          />
+
+          <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+            <span className="text-[#808086] text-2xl sm:text-4xl md:text-5xl lg:text-[52px] font-normal tracking-tight mb-1 sm:mb-2">
+              Ready to shine?
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-normal md:font-medium tracking-tight text-white mb-4 sm:mb-5">
+              Unlock access today.
+            </h2>
+            <p className="text-[#8e8e93] text-xs sm:text-sm md:text-base font-normal mb-8 sm:mb-10 text-center tracking-tight max-w-lg">
+              Let&apos;s build a company your are proud of together.
+            </p>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-chatbot"));
+                }
+              }}
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-[#ececf0] hover:bg-white text-neutral-900 rounded-full text-xs sm:text-sm font-medium hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.35)] inline-flex items-center gap-2.5 cursor-pointer border border-white/50"
+            >
+              <DottedGlobe size={18} className="text-neutral-900" />
+              <span>Let&apos;s work together</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
